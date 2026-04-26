@@ -15,16 +15,17 @@ const HeroScene = lazy(() =>
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Talat Interiors — Premium UPVC, Interiors & Renovation in Chakwal" },
+      { title: "Talat Interior Chakwal | UPVC Windows, Interiors, Kitchens & Renovation" },
       {
         name: "description",
         content:
-          "Premium UPVC windows & doors, interior design, kitchen cabinets and renovation services. Crafted in Chakwal, Pakistan.",
+          "Talat Interior Chakwal offers premium UPVC windows and doors, interior design, kitchen cabinets and full renovation services in Chakwal, Pakistan.",
       },
-      { property: "og:title", content: "Talat Interiors — Premium UPVC & Interiors" },
+      { property: "og:title", content: "Talat Interior Chakwal — Premium UPVC & Interiors" },
       {
         property: "og:description",
-        content: "Premium UPVC windows, interiors, kitchens & renovation in Chakwal.",
+        content:
+          "Premium UPVC windows, interiors, kitchens and renovation by Talat Interiors in Chakwal.",
       },
     ],
   }),
@@ -87,15 +88,15 @@ function Index() {
 
         <div className="container-luxe relative z-10 grid lg:grid-cols-12 gap-10 items-center min-h-[78vh] py-20">
           <div className="lg:col-span-7">
-            <div className="eyebrow mb-6">Talat UPVC & Interiors · Chakwal</div>
+            <div className="eyebrow mb-6">Talat Interior Chakwal · UPVC & Interiors</div>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.02] text-balance text-bone">
               Crafted spaces.
               <br />
               <span className="italic text-bronze-light">Quietly</span> luxurious.
             </h1>
             <p className="mt-8 max-w-xl text-base md:text-lg text-bone/70 leading-relaxed">
-              Premium UPVC windows, interior design, kitchen cabinets and full renovation —
-              engineered in our Chakwal factory and finished by hand.
+              Talat Interior Chakwal designs premium interiors, UPVC windows, kitchen cabinets and
+              full renovations — engineered in our Chakwal factory and finished by hand.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link

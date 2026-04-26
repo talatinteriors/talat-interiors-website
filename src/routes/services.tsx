@@ -8,13 +8,16 @@ import renovationImg from "@/assets/renovation.jpg";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — UPVC, Interiors, Kitchens & Renovation | Talat Interiors" },
+      { title: "Interior Design & UPVC Services in Chakwal | Talat Interiors" },
       {
         name: "description",
         content:
-          "Premium UPVC windows & doors, interior design, kitchen cabinets and full renovation services in Chakwal.",
+          "Talat Interiors provides interior design, UPVC windows and doors, kitchen cabinets, renovation and construction services in Chakwal.",
       },
-      { property: "og:title", content: "Services — Talat Interiors" },
+      {
+        property: "og:title",
+        content: "Interior Design & UPVC Services in Chakwal — Talat Interiors",
+      },
       {
         property: "og:description",
         content: "UPVC, interiors, kitchens, renovation — crafted in Chakwal.",

@@ -2,6 +2,7 @@ import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/r
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StickyCTA } from "@/components/StickyCTA";
+import { SITE } from "@/lib/site";
 
 import appCss from "../styles.css?url";
 
@@ -32,17 +33,68 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Talat Interiors — Premium UPVC, Interiors & Renovation in Chakwal" },
+      { title: "Talat Interior Chakwal | UPVC, Interiors, Kitchens & Renovation" },
       {
         name: "description",
         content:
-          "Talat UPVC & Interiors — premium UPVC windows & doors, interior design, kitchen cabinets and renovation services in Chakwal, Pakistan.",
+          "Talat Interior Chakwal provides premium UPVC windows and doors, interior design, kitchen cabinets, renovation and construction services in Chakwal, Pakistan.",
       },
       { name: "author", content: "Talat Interiors" },
-      { property: "og:title", content: "Talat Interiors — Premium UPVC & Interiors" },
-      { property: "og:description", content: "Crafted UPVC, interiors and renovation in Chakwal." },
+      {
+        name: "keywords",
+        content:
+          "Talat Interior Chakwal, Talat Interiors, interior design Chakwal, UPVC windows Chakwal, kitchen cabinets Chakwal, renovation Chakwal",
+      },
+      { property: "og:title", content: "Talat Interior Chakwal — Premium UPVC & Interiors" },
+      {
+        property: "og:description",
+        content: "Crafted UPVC, interiors, kitchens and renovation services in Chakwal.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE.url },
       { name: "twitter:card", content: "summary" },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "HomeAndConstructionBusiness",
+          "@id": `${SITE.url}/#business`,
+          name: SITE.fullName,
+          alternateName: ["Talat Interiors", "Talat Interior Chakwal"],
+          url: SITE.url,
+          telephone: SITE.phones,
+          address: [
+            {
+              "@type": "PostalAddress",
+              streetAddress: "Ara Bazar",
+              addressLocality: "Chakwal",
+              addressCountry: "PK",
+            },
+            {
+              "@type": "PostalAddress",
+              streetAddress: "Pinwal Road, Gujar Chowk",
+              addressLocality: "Chakwal",
+              addressCountry: "PK",
+            },
+          ],
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: SITE.factoryCoords.lat,
+            longitude: SITE.factoryCoords.lng,
+          },
+          areaServed: {
+            "@type": "City",
+            name: "Chakwal",
+          },
+          makesOffer: SITE.services.map((service) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: service,
+              areaServed: "Chakwal",
+            },
+          })),
+        },
+      },
     ],
     links: [
       {
