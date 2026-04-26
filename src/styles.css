@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-bronze: var(--bronze);
+  --color-bronze-light: var(--bronze-light);
+  --color-bone: var(--bone);
+  --color-obsidian: var(--obsidian);
+  --color-stone: var(--stone);
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Brand palette */
+  --obsidian: oklch(0.15 0.005 60); /* near-black */
+  --bone: oklch(0.965 0.008 80); /* warm off-white */
+  --stone: oklch(0.88 0.01 70); /* marble grey */
+  --bronze: oklch(0.58 0.09 55); /* bronze accent */
+  --bronze-light: oklch(0.72 0.1 70); /* soft gold */
+
+  --background: var(--bone);
+  --foreground: var(--obsidian);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--obsidian);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--obsidian);
+  --primary: var(--obsidian);
+  --primary-foreground: var(--bone);
+  --secondary: oklch(0.94 0.005 70);
+  --secondary-foreground: var(--obsidian);
+  --muted: oklch(0.93 0.005 70);
+  --muted-foreground: oklch(0.45 0.01 60);
+  --accent: var(--bronze);
+  --accent-foreground: var(--bone);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: var(--bone);
+  --border: oklch(0.86 0.008 70);
+  --input: oklch(0.9 0.008 70);
+  --ring: var(--bronze);
+
+  --shadow-luxe: 0 30px 80px -20px color-mix(in oklab, var(--obsidian) 35%, transparent);
+  --shadow-soft: 0 12px 40px -12px color-mix(in oklab, var(--obsidian) 18%, transparent);
+  --gradient-bronze: linear-gradient(135deg, var(--bronze) 0%, var(--bronze-light) 100%);
+}
+
+.dark {
+  --background: var(--obsidian);
+  --foreground: var(--bone);
+  --card: oklch(0.2 0.005 60);
+  --card-foreground: var(--bone);
+  --popover: oklch(0.2 0.005 60);
+  --popover-foreground: var(--bone);
+  --primary: var(--bone);
+  --primary-foreground: var(--obsidian);
+  --secondary: oklch(0.22 0.005 60);
+  --secondary-foreground: var(--bone);
+  --muted: oklch(0.22 0.005 60);
+  --muted-foreground: oklch(0.7 0.01 70);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: var(--bronze);
+    color: var(--bone);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .container-luxe {
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .container-luxe {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    font-weight: 500;
+  }
+
+  .divider-bronze {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--bronze) 50%, transparent);
+  }
+
+  .btn-luxe {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.95rem 1.8rem;
+    background: var(--obsidian);
+    color: var(--bone);
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--obsidian);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-luxe:hover {
+    background: var(--bronze);
+    border-color: var(--bronze);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+  .btn-ghost-luxe {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.95rem 1.8rem;
+    background: transparent;
+    color: var(--obsidian);
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid color-mix(in oklab, var(--obsidian) 25%, transparent);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .btn-ghost-luxe:hover {
+    border-color: var(--bronze);
+    color: var(--bronze);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 1s ease,
+      transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+  }
+}
