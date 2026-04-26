@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-const siteUrl = process.env.SITE_URL || "https://example.com";
+const siteUrl = process.env.SITE_URL || "https://talatinteriors.com";
 const outputDir = path.resolve("dist/client");
 const routes = ["/", "/about", "/services", "/projects", "/contact"];
 
@@ -29,6 +29,8 @@ await writeFile(
   await server.default.fetch(new Request(siteUrl)).then((r) => r.text()),
 );
 await writeFile(path.join(outputDir, ".nojekyll"), "");
+await writeFile(path.join(outputDir, "robots.txt"), createRobots(siteUrl));
+await writeFile(path.join(outputDir, "sitemap.xml"), createSitemap(siteUrl, routes));
 
 const customDomain = process.env.CUSTOM_DOMAIN?.trim();
 
@@ -37,3 +39,29 @@ if (customDomain) {
 }
 
 console.log(`Prerendered ${routes.length} routes into ${outputDir}`);
+
+function createRobots(baseUrl) {
+  return `User-agent: *
+Allow: /
+
+Sitemap: ${new URL("/sitemap.xml", baseUrl)}
+`;
+}
+
+function createSitemap(baseUrl, paths) {
+  const urls = paths
+    .map((route) => {
+      const loc = new URL(route, baseUrl).toString();
+
+      return `  <url>
+    <loc>${loc}</loc>
+  </url>`;
+    })
+    .join("\n");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`;
+}
