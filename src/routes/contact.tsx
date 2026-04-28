@@ -17,7 +17,9 @@ export const Route = createFileRoute("/contact")({
         property: "og:description",
         content: "Office in Ara Bazar. Factory on Pinwal Road, Chakwal.",
       },
+      { property: "og:url", content: `${SITE.url}/contact` },
     ],
+    links: [{ rel: "canonical", href: `${SITE.url}/contact` }],
   }),
   component: ContactPage,
 });

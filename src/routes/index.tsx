@@ -27,7 +27,9 @@ export const Route = createFileRoute("/")({
         content:
           "Premium UPVC windows, interiors, kitchens and renovation by Talat Interiors in Chakwal.",
       },
+      { property: "og:url", content: SITE.url },
     ],
+    links: [{ rel: "canonical", href: SITE.url }],
   }),
   component: Index,
 });

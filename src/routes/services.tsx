@@ -4,6 +4,7 @@ import upvcImg from "@/assets/upvc.jpg";
 import livingImg from "@/assets/living.jpg";
 import kitchenImg from "@/assets/kitchen.jpg";
 import renovationImg from "@/assets/renovation.jpg";
+import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -22,7 +23,9 @@ export const Route = createFileRoute("/services")({
         property: "og:description",
         content: "UPVC, interiors, kitchens, renovation — crafted in Chakwal.",
       },
+      { property: "og:url", content: `${SITE.url}/services` },
     ],
+    links: [{ rel: "canonical", href: `${SITE.url}/services` }],
   }),
   component: ServicesPage,
 });

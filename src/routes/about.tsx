@@ -15,7 +15,9 @@ export const Route = createFileRoute("/about")({
       },
       { property: "og:title", content: "About Talat Interiors" },
       { property: "og:description", content: "Craft-led UPVC and interiors from Chakwal." },
+      { property: "og:url", content: `${SITE.url}/about` },
     ],
+    links: [{ rel: "canonical", href: `${SITE.url}/about` }],
   }),
   component: AboutPage,
 });

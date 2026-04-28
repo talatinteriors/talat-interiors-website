@@ -7,6 +7,7 @@ import kitchenImg from "@/assets/kitchen.jpg";
 import bedroomImg from "@/assets/bedroom.jpg";
 import upvcImg from "@/assets/upvc.jpg";
 import renovationImg from "@/assets/renovation.jpg";
+import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -19,7 +20,9 @@ export const Route = createFileRoute("/projects")({
       },
       { property: "og:title", content: "Projects — Talat Interiors" },
       { property: "og:description", content: "Selected residential and commercial work." },
+      { property: "og:url", content: `${SITE.url}/projects` },
     ],
+    links: [{ rel: "canonical", href: `${SITE.url}/projects` }],
   }),
   component: ProjectsPage,
 });
